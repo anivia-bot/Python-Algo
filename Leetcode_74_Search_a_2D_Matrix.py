@@ -25,7 +25,6 @@ class Solution:
         if not topPtr <= botPtr:
             return False
         
-        
         # Start searching the target with BST on the correct Row
         leftPtr = 0
         rightPtr = col - 1
@@ -39,8 +38,4 @@ class Solution:
                 rightPtr = midCol - 1
             else:
                 return True
-            
         return False
-        
-        
-        
