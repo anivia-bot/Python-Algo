@@ -22,3 +22,4 @@ class Solution:
             return (max(leftVal, rightVal)+1, leftBalanced and rightBalanced and abs(leftVal - rightVal) <= 1)
         return dfs(root)[-1]
         
+        
