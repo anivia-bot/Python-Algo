@@ -21,6 +21,7 @@ class Solution:
         
         
         # This is the hashmap solution with O(N) time and space complexity
+    def majorityElement(self, nums: List[int]) -> int:
         if len(nums) == 1:
             return nums[0]
         count = {}
