@@ -1,0 +1,38 @@
+from collections import defaultdict
+import collections
+
+def accountMerge(accounts):
+    graph = collections.defaultdict(set)
+    email_to_name = {}
+
+    for account in accounts:
+        name = account[0]
+        for email in account[1:]:
+            graph[email].add(account[1])
+            graph[account[1]].add(email)
+            print(graph)
+            email_to_name[email] = name
+            print('---------------------')
+
+    res = []
+    visited = set()
+
+    for email in graph:
+        if email not in visited:
+            stack = [email]
+            visited.add(email)
+            local_res = []
+
+            while stack:
+                node = stack.pop()
+                local_res.append(node)
+
+                for edge in graph[node]:
+                    if edge not in visited:
+                        stack.append(edge)
+                        visited.add(edge)
+            res.append([email_to_name[email]] + sorted(local_res))
+    return res
+                                                    
+accounts = [["John","johnsmith@mail.com","john_newyork@mail.com","john_london@mail.com","john_taiwan@mail.com"],["John","john00@mail.com","johnsmith@mail.com","john_newyork@mail.com","john_london@mail.com","john_taiwan@mail.com", "WILSON !!!!"],["Mary","mary@mail.com"],["John","johnnybravo@mail.com"]]
+print(accountMerge(accounts))
