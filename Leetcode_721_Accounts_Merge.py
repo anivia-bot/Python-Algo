@@ -10,9 +10,7 @@ def accountMerge(accounts):
         for email in account[1:]:
             graph[email].add(account[1])
             graph[account[1]].add(email)
-            print(graph)
             email_to_name[email] = name
-            print('---------------------')
 
     res = []
     visited = set()
