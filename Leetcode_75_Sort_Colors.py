@@ -10,18 +10,19 @@ class Solution:
         i = 0
         
         def swap(l, r):
-            temp = nums[r]
-            nums[r] = nums[l]
-            nums[l] = temp
+            temp = nums[l]
+            nums[l] = nums[r]
+            nums[r] = temp
         
         while rightPtr >= i:
-            
             if nums[i] == 0:
                 swap(leftPtr, i)
                 leftPtr += 1
             elif nums[i] == 2:
-                swap(rightPtr, i)
+                swap(i, rightPtr)
                 rightPtr -= 1
-                i -= 1
+                continue
+            
             i += 1
         return nums
+                
