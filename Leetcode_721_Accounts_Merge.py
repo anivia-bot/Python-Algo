@@ -31,4 +31,4 @@ def accountMerge(accounts):
                         visited.add(edge)
             res.append([email_to_name[email]] + sorted(local_res))
     return res
-                                                    
+    
