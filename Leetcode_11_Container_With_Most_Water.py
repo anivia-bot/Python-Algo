@@ -6,14 +6,16 @@ class Solution:
         
         p1 = 0
         p2 = len(height)-1
-        water = 0
+        maxWater = 0
         
         while p2 > p1:
+            
             if height[p1] >= height[p2]:
-                water = max(water, height[p2]*(p2-p1))
+                maxWater = max(maxWater, height[p2]*(p2-p1))
                 p2 -= 1
-            if height[p2] > height[p1] :
-                water = max(water, height[p1]*(p2-p1))
+            
+            elif height[p2] >= height[p1]:
+                maxWater = max(maxWater, height[p1]*(p2-p1))
                 p1 += 1
-                
-        return water
+            
+        return maxWater
