@@ -14,8 +14,6 @@ def build_graph():
     # edge of the graph
     for edge in edges:
         for e in edge[1:]:
-            
-            
             # Creating the graph
             # as adjacency list
             graph[edge[0]].append(e)
