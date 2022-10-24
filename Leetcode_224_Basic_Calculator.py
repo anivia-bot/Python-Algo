@@ -1,35 +1,29 @@
 class Solution:
     def calculate(self, s: str) -> int:
-
-        # The time complexity for this algorithm would be O(N)
-        # The space complexity for this algo would be O(N) as well
+        # Time complexity would be O(N)
+        # Speace complexity would be O(N) as well
+        cur = 0 
+        res = 0
+        sign = 1
         stack = []
-        operator = '+'
-        curr = 0
-        opSet = {'+','-','*','/'}
-        numSet = set(str(x) for x in range(10))
         
         
-        
-        for indx in range(len(s)):
-            if s[indx] in numSet:
-                curr = curr*10 + int(s[indx])
-                
-            if s[indx] in opSet or indx == len(s)-1:
-                
-                if operator == '+':
-                    stack.append(curr)
-                
-                elif operator == '-':
-                    stack.append(-curr)
-                
-                elif operator == '*':
-                    stack[-1] *= curr
-                    
-                elif operator == '/':
-                    stack[-1] = int(stack[-1]/curr)
-                
-                curr = 0
-                operator = s[indx]
+        for char in s:
+            if char.isdigit():
+                cur = cur*10 + int(char)
+            elif char in ['+', '-']:
+                res += sign*cur
+                sign = 1 if char =='+' else -1
+                cur = 0
+            elif char == '(':
+                stack.append(res)
+                stack.append(sign)
+                sign = 1
+                res = 0
             
-        return sum(stack)
+            elif char == ')':
+                res += sign * cur
+                res *= stack.pop()
+                res += stack.pop()
+                cur = 0
+        return res + sign * cur
