@@ -12,8 +12,10 @@ class Solution:
                 start = i
             stack.append((start, height))
             
-        for i, h in stack:
+        while stack:
+            i, h = stack.pop()
             maxArea = max(maxArea, (h*(len(heights)-i )))
         
         return maxArea
+                
                 
