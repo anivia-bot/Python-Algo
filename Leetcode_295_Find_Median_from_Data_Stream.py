@@ -1,3 +1,4 @@
+import heapq
 class MedianFinder:
     
     # Since we are using a heap data structure, the time complexity for this algorithm would be O(log(N))

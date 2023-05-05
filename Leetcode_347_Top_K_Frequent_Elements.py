@@ -20,3 +20,28 @@ class Solution:
                         break
                     res.append(item)
         return res
+    
+
+        count = {}
+        array = [[]]
+        res = []
+        for num in nums:
+            array.append([])
+            if num not in count:
+                count[num] = 1
+            else:
+                count[num] += 1
+
+        for key, val in count.items():
+            array[val].append(key)
+
+        for knum in reversed(array):
+            if not knum:
+                next
+            else:
+                for i in knum:
+                    if k == 0:
+                        break
+                    res.append(i)
+                    k -= 1
+        return res
