@@ -7,7 +7,7 @@
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         
-        # O(N) time complexity and O(1) space
+        # O(N) time complexity and O(H) space
         
         if not root:
             return 0
