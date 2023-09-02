@@ -15,7 +15,10 @@ Input: nums = [1,1,1,3,3,4,3,2,4,2]
 Output: true
 '''
 
-# This problem can either be solved by using a dict or set to track the repeated numbers.
+'''
+Solution:
+This problem can either be solved by using a dict or set to track the repeated numbers.
+'''
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         # Time complexity would be O(N)
