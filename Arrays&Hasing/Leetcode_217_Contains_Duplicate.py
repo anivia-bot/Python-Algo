@@ -20,7 +20,7 @@ Solution:
 This problem can either be solved by using a dict or set to track the repeated numbers.
 '''
 class Solution:
-    def containsDuplicate(self, nums: List[int]) -> bool:
+    def containsDuplicate(self, nums):
         # Time complexity would be O(N)
         # Space complexity would be O(N) as well
         seen = {}
