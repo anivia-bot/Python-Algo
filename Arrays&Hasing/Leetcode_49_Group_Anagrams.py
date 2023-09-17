@@ -30,7 +30,6 @@ the same char the same amount of times
 Once it has been completed, store it back into a res list
 Check edge cases eg: len of the input is less than or eaual to 1
 
-
 '''
 
 class Solution:
