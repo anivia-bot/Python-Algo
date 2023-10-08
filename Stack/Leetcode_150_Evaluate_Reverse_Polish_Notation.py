@@ -45,20 +45,28 @@ for the next operation.
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         # This algo runs in O(N) time and O(N) space
+        if not tokens:
+            return 0
+
         stack = []
-        for char in tokens:
-            if char == "+":
-                stack.append(stack.pop() + stack.pop())
-            elif char == "-":
-                a = stack.pop()
-                b = stack.pop()
-                stack.append(b-a)
-            elif char == "*":
-                stack.append(stack.pop() * stack.pop())
-            elif char == "/":
-                a = stack.pop()
-                b = stack.pop()
-                stack.append(int(b/a))
+        operators = ('+', '-', '*', '/')
+
+        for t in tokens:
+            if t not in operators:
+                stack.append(int(t))
             else:
-                stack.append(int(char))
+                secondNum = stack.pop()
+                firstNum = stack.pop()
+                if t == '+':
+                    val = firstNum + secondNum
+                    stack.append(val)
+                elif t == '-':
+                    val = firstNum - secondNum
+                    stack.append(val)
+                if t == '*':
+                    val = firstNum * secondNum
+                    stack.append(val)
+                if t == '/':
+                    val = int(firstNum / secondNum)
+                    stack.append(val)
         return stack[0]
