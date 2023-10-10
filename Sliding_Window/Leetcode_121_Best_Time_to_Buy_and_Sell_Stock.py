@@ -37,7 +37,7 @@ update the right ptr by every iteration
 class Solution:
     # The time complexity would be O(N) since it is a two pointer one pass solution
     # The space complexity would be O(1) since it only required 2 extra pointers for this solution
-    def maxProfit(self, prices: List[int]) -> int:
+    def maxProfit(self, prices):
         leftPtr = 0
         rightPtr = 1
         profit = 0

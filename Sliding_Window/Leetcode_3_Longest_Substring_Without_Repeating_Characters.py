@@ -36,7 +36,7 @@ return the max longest sub string
 '''
 
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    def lengthOfLongestSubstring(self, s):
 
         if not s:
             return 0
