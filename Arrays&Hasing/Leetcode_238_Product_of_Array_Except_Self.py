@@ -29,7 +29,7 @@ repeat the same process backwards
 '''
 
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
+    def productExceptSelf(self, nums):
         
         # The time complexity is O(N) and the space complexity would be O(N)
         res = [1]*len(nums)
