@@ -1,3 +1,34 @@
+'''
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', 
+determine if the input string is valid.
+An input string is valid if:
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Every close bracket has a corresponding open bracket of the same type.
+
+Example 1:
+
+Input: s = "()"
+Output: true
+Example 2:
+
+Input: s = "()[]{}"
+Output: true
+Example 3:
+
+Input: s = "(]"
+Output: false
+'''
+
+'''
+Solution:
+Append opening bracket into the stack. pop the stack when we encounter a closing bracket
+compare if the value of the closing bracket equals to the opening bracket
+
+Care for edges cases such as stack is empty and we have a closing bracket (nothing to pop from stack)
+
+'''
+
 class Solution:
     def isValid(self, s: str) -> bool:
         
@@ -11,26 +42,24 @@ class Solution:
         if not s:
             return False
         
-        parentheseDict = {
-            ")":"(",
-            "]":"[",
-            "}":"{"
+        parenthesesDict = {
+            ')':'(',
+            ']':'[',
+            '}':'{'
         }
-        queue = []
-        
+
+        stack = []
         for char in s:
-            if char in parentheseDict:
-                if not queue:
-                    return False
-                else:
-                    queueElement = queue.pop()
-                    if parentheseDict[char] != queueElement:
-                        return False
+            if char not in parenthesesDict:
+                stack.append(char)
             else:
-                queue.append(char)
-            
-        if len(queue) == 0:
-            return True
-        else:
-            return False
+                if stack:
+                    openingBracket = stack.pop()
+                    closingBracket = parenthesesDict[char]
+                    if openingBracket != closingBracket:
+                        return False
+                else:
+                    return False
+        return True if not stack else False
+
             
