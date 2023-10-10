@@ -29,7 +29,7 @@ if there are only one element in the list we still need to excecute the loop.
 
 
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
+    def search(self, nums, target):
         
         # Binary Seach is a O(log(n)) solution
         # Space complexity would be O(1)
