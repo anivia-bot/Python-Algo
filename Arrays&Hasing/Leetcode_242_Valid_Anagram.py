@@ -23,7 +23,7 @@ Return False else return True
 
 '''
 class Solution:
-    def isAnagram(self, s: str, t: str) -> bool:
+    def isAnagram(self, s, t):
         
         # The time complexity for this algo is O(N) + O(N) = O(N) 
         # Space complexity would be O(26) = O(1) because the most this wordCount dict would save is 26 English char.
@@ -41,5 +41,5 @@ class Solution:
                 return False
             if checkS[j] == 0:
                 return False
-            checkS[j] -= 1
+            checkS[j] -= 1      
         return True

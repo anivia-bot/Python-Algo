@@ -21,9 +21,10 @@ The trick is store the pos key into the dict. Using  (i//3, j//3) to store all p
 if there are nums appeared again return False
 
 '''
+import collections
 
 class Solution:
-    def isValidSudoku(self, board: List[List[str]]) -> bool:
+    def isValidSudoku(self, board):
 
         # Time complexity and space complexity would be O(9^2) so technically it is O(1)
         # But if we increase the size of the board then it will be O(N^2) 

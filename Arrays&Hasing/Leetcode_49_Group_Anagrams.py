@@ -31,9 +31,10 @@ Once it has been completed, store it back into a res list
 Check edge cases eg: len of the input is less than or eaual to 1
 
 '''
+from collections import defaultdict
 
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+    def groupAnagrams(self, strs):
         
         # This algo runs in O(M*N) time and O(M) space
         
@@ -41,7 +42,7 @@ class Solution:
         res = []
         for s in strs:
             count = [0]*26
-            for c in s:
+            for c in s: 
                 count[ord(c)-ord('a')] += 1
             resDict[tuple(count)].append(s)
         

@@ -30,10 +30,8 @@ if they are equal then just return it
 
 '''
 
-
-
 class Solution:
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+    def topKFrequent(self, nums, k):
 
         # Bucktet sort runs in O(N) time and take O(N) space
         countDict = {}

@@ -26,7 +26,7 @@ Then we compare it with the longest consecutive num using the max function.
 
 # This algo runs in O(N) time and O(N) space
 class Solution:
-    def longestConsecutive(self, nums: List[int]) -> int:
+    def longestConsecutive(self, nums):
         numsSet = set(nums)
         longest = 0
         for num in nums:
