@@ -51,7 +51,7 @@ while r > l and nums[l] == nums[l-1]:
 
 
 class Solution:
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
+    def threeSum(self, nums):
 
         # For the algo, the sorting part will take at least nlog(n) time and 
         # the two pointer approach in a nested loop will take O(n^2) time so in total it would be O(n^2)

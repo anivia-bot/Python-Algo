@@ -33,7 +33,7 @@ repeat the same thing with rMax and r-1 ptr
 '''
 
 class Solution:
-    def trap(self, height: List[int]) -> int:
+    def trap(self, height):
         # The time complexity would be O(N) and the space complexity would be O(1)
     
         l, r = 0, len(height) - 1
