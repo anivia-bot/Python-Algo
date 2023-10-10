@@ -38,7 +38,7 @@ be easier to insert to the right pos in res.
 
 
 class Solution:
-    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+    def dailyTemperatures(self, temperatures):
 
         # O(N) time and space
         res = [0] * len(temperatures)

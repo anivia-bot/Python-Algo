@@ -38,7 +38,7 @@ return res
 
 '''
 class Solution:
-    def minWindow(self, s: str, t: str) -> str:
+    def minWindow(self, s, t):
         
         # time complexity would be O(N)
         # space complexity would be O(1) since there are at most 26 chars in the alphabets

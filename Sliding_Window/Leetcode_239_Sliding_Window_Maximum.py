@@ -43,9 +43,9 @@ otherwise we will just be expending the right ptr untill the condition is satisf
 
 '''
 
-
+import collections
 class Solution:
-    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+    def maxSlidingWindow(self, nums, k):
 
         # O(N) time and space
 

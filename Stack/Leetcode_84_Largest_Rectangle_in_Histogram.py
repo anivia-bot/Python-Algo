@@ -32,7 +32,7 @@ we will be calculating the max area by height * (len(heights) - idx)
 '''
 
 class Solution:
-    def largestRectangleArea(self, heights: List[int]) -> int:
+    def largestRectangleArea(self, heights):
         # This algo runs in O(N) time and O(N) space
         maxArea = 0
         stack = []

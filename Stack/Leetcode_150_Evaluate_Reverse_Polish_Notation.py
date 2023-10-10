@@ -43,7 +43,7 @@ for the next operation.
 '''
 
 class Solution:
-    def evalRPN(self, tokens: List[str]) -> int:
+    def evalRPN(self, tokens):
         # This algo runs in O(N) time and O(N) space
         if not tokens:
             return 0

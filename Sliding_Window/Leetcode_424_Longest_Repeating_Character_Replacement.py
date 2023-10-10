@@ -30,7 +30,7 @@ this 'k + maxF < (r - l + 1)' condition. Compare the lenght of the string so far
 
 '''
 class Solution:
-    def characterReplacement(self, s: str, k: int) -> int:
+    def characterReplacement(self, s, k):
         count = {}
         l = 0
         maxF = 0

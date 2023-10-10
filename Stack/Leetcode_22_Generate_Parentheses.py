@@ -33,7 +33,7 @@ result so we will need tp pop the value
 
 
 class Solution:
-    def generateParenthesis(self, n: int) -> List[str]:
+    def generateParenthesis(self, n):
 
         # The time complexity would be Catalan numbers which is O((4^n)/sqrt(n))) 
         # The space complexity would be O(N) as it was the depth of the tree which is 2N = O(N)
