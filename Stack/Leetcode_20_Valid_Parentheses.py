@@ -30,7 +30,7 @@ Care for edges cases such as stack is empty and we have a closing bracket (nothi
 '''
 
 class Solution:
-    def isValid(self, s: str) -> bool:
+    def isValid(self, s):
         
         # The time complexity is O(N) since we are going over the entire array once
         # Space complexity would be the parentheseDict O(3) + queue O(N) = O(N)

@@ -40,7 +40,7 @@ since the slower car will be representing
 '''
 
 class Solution:
-    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+    def carFleet(self, target: int, position, speed):
 
         # Time complexity would be O(NlogN) due to sorting
         # Space complexity would be O(N)
