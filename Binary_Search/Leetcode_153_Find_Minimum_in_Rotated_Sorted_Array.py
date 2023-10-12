@@ -38,7 +38,7 @@ the right ptr still needs to perform mid - 1 operation.
 
 
 class Solution:
-    def findMin(self, nums: List[int]) -> int:
+    def findMin(self, nums):
 
         # Time complexity runs in O(logN) and O(1) space
         
