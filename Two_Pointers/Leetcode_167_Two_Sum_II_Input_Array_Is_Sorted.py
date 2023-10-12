@@ -38,7 +38,7 @@ than the target. move the left ptr to the right.
 '''
 
 class Solution:
-    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+    def twoSum(self, numbers, target):
         # This solution runs in O(N) time as we are using a two pointers approach
         # We do not need have extra memory so it is O(1)
         l = 0

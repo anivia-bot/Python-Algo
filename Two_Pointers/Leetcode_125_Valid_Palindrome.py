@@ -31,7 +31,7 @@ if not return False, if true update ptr right and left
 '''
 
 class Solution:
-    def isPalindrome(self, s: str) -> bool:
+    def isPalindrome(self, s):
         
         # Try to do a two pointers solution would be O(N)
         # Space complexity would be O(1)

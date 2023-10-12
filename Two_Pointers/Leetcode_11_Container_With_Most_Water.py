@@ -26,7 +26,7 @@ The trick is to update the smaller ptr so we maximize the water area.
 
 
 class Solution:
-    def maxArea(self, height: List[int]) -> int:
+    def maxArea(self, height):
         
         # This algo runs in O(N) time as it traverse through the entire array
         # The space compelexity would be O(1) since we didnt use any auxiliary data structure
