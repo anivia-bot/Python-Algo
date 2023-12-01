@@ -10,7 +10,7 @@ class Solution:
 
         # Time complexity would be O(N) as we will traverse the entire tree using BFS
         # Space complexity would be O(N) since we are using a q data structure. The worst case would be O(N)
-        
+
         res = []
         q = collections.deque()
         q.append(root)
