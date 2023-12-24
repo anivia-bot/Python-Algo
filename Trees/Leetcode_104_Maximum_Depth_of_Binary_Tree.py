@@ -36,7 +36,7 @@ class Solution:
         # return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
 
         # Solution 2 BFS
-
+    
         # if not root:
         #     return 0
         
