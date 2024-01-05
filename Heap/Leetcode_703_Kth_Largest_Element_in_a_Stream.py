@@ -5,8 +5,8 @@ Implement KthLargest class:
 KthLargest(int k, int[] nums) Initializes the object with the integer k and the stream of integers nums.
 int add(int val) Appends the integer val to the stream and returns the element representing 
 the kth largest element in the stream.
-Example 1:
 
+Example 1:
 Input
 ["KthLargest", "add", "add", "add", "add", "add"]
 [[3, [4, 5, 8, 2]], [3], [5], [10], [9], [4]]
