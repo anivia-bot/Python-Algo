@@ -27,6 +27,13 @@ to perform operation. if s1 == s2 we ignore, we push the difference between s1 a
 once the while loop is over we return the last stone or no stone (return 0 if no stone)
 '''
 
+# mathematically speaking building a heap only require O(N) 
+# however in this case we have 
+# O(n) (heap build) + O(nlog(n)) (log(n) comes from popping and adding to the heap)
+# (n comes from n operation on popping and adding)
+# in sum the time complexity would be O(N) + O(NlogN) = O(nlog(n))
+# the space complexity would be O(N) as it holds all the element in the heap
+
 from collections import heapq
 class Solution:
     def lastStoneWeight(self, stones):
