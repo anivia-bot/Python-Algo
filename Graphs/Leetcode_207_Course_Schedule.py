@@ -29,11 +29,11 @@ ex:
 we can start implementing our dfs traversal function.
 For all dfs function base cases are necessary.
 for example if the course has been visited then we found a cycle.
-return False immediately. If the adj is empty it means all courses can be meet.
+return False immediately. If node has been processed (in done) then we simply return True.
 
 if none of the base cases meet, that means we are visiting a new node (add it to visited)
 Then we iterate over it's preReq and run DFS on it as well. return False if dfs found a cycle.
-remove node from visited and make the preMap[crs] = [] since if some other nodes visit it again
+remove node from visited and add the current node to done since if some other nodes visit it again
 we know that all crs can be completed.
 
 Remeber one edge cases when some nodes are seperated. Be sure to iterate through every nodes and run dfs 
@@ -46,12 +46,13 @@ class Solution:
         # The space complexity would be O(N)
         preMap = {n:[] for n in range(numCourses)}
         visited = set()
+        done = set()
         for crs, pre in prerequisites:
             preMap[crs].append(pre)
         def dfs(crs):
             if crs in visited:
                 return False
-            if preMap[crs] == []:
+            if crs in done:
                 return True
 
             visited.add(crs)
@@ -61,10 +62,9 @@ class Solution:
                 if not cycle:
                     return False
             visited.remove(crs)
-            preMap[crs] = []
+            done.add(crs)
             return True
         for crs in range(numCourses):
             if not dfs(crs):
                 return False
-        return True      
-            
+        return True                
