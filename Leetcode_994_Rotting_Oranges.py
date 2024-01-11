@@ -1,5 +1,6 @@
+from collections import deque
 class Solution:
-    def orangesRotting(self, grid: List[List[int]]) -> int:
+    def orangesRotting(self, grid):
         # Time complexity would be O(N*M)
         # Space complexity would be O(N*M) since we are storing all elements in the array 
         q = deque()
