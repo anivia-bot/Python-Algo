@@ -1,5 +1,12 @@
+'''
+
+'''
+'''
+Solution:
+
+'''
 class Solution:
-    def rob(self, nums: List[int]) -> int:
+    def rob(self, nums):
         # O(N) time and O(1) space
 
         if not nums:
