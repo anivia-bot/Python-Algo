@@ -13,7 +13,7 @@ class Solution:
         def dfs(curr):
             if len(curr) == len(nums):
                 res.append(curr.copy())
-                return
+                return 
             for num in count:
                 if count[num] > 0:
                     count[num] -= 1

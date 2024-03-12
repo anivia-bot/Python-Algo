@@ -1,5 +1,25 @@
+'''
+Given a string s, return the longest 
+palindromic substring in s.
+
+Example 1:
+
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+Example 2:
+Input: s = "cbbd"
+Output: "bb"
+ 
+'''
+
+'''
+Solution:
+
+'''
+
 class Solution:
-    def longestPalindrome(self, s: str) -> str:
+    def longestPalindrome(self, s):
         
         # Middle out algo will take O(N^2) time complexity
         # The first N time complexity would be iterate through the entire string, the N time 
