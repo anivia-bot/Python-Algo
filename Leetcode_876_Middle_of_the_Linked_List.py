@@ -18,5 +18,5 @@ class Solution:
             right = dfs(root.right)
             self.count = max(self.count, left + right)
             return max(left, right) + 1
-        dfs(root)
+        dfs(root)   
         return self.count

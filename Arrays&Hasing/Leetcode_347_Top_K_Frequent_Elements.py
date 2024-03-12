@@ -27,7 +27,6 @@ if the item is an empty [] just skip/continue it
 count if the val in the res is equal to the k val
 if they are equal then just return it
 
-
 '''
 
 class Solution:
