@@ -15,6 +15,10 @@ Output: "bb"
 
 '''
 Solution:
+This is a middle out algo is to basically iterate over the entire string and use a middle out 
+approach to check if t string is a palindrom, The only thing we need to make sure is that
+we need to check for both odd and even len of the string with both l, r starting from i and 
+l starting from i and r starting from i + 1
 
 '''
 
