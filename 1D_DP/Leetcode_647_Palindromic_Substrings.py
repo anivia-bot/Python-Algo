@@ -11,7 +11,8 @@ Explanation: Three palindromic strings: "a", "b", "c".
 '''
 '''
 Solution:
-
+This is another classic middle out approach, iterate over the string and check if it is a palindrom.
+Be care of odd and even string len as we need to change the input of l = i and r = i + 1
 
 '''
 class Solution:
@@ -26,7 +27,9 @@ class Solution:
                 r += 1
 
         for i in range(len(s)):
+            # odd
             checkP(i, i)
+            # even
             checkP(i, i + 1)
 
         return self.res
