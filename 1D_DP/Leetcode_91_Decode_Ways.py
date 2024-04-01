@@ -21,25 +21,48 @@ Explanation: "12" could be decoded as "AB" (1 2) or "L" (12).
 '''
 Solution:
 
+Think of this problem as another climbing stair problem, however, 
+instead of keep increasing the accumlated steps we ONLY increase when
+there are two digits that have formed. Let's say everything is initalize to 0
+in an array but in this case we only have 2 variables to track (thats why we set curr to be 0) 
+ex [0,0,0,0,0,1] -> curr = 0 at every iteration
+
+if we face a 0 then the curr 0 will be insert in the spot where 0 is. So when we look back one spot
+we know it is impossible to have to form any char when the value is 0. In another words
+Let's say we have a value 111006 -> the result will be 0. the first 0 will be insert into oneBack, 
+we then interate forward the second 0 will be insert into twoBack. Thus we will not have any possiblity
+to decode. 
+
+In sum we set curr = oneBack since one digit will not increase the variation of strings
+if i->i+2 (i+2 will not be included so it will only be i and i + 1) is a valid 2 digits
+then incrase curr to be += twoBack. Why ? because at the curr index i,
+"Both twoBack and oneBack can reach to the currIdx" ex: 3 posibility at twoBack, 2 possiblity at oneBack
+In total there are 5 ways to reach the current index
+, so curr = oneBack then curr += twoBack
+
+Update oneBack and twoBack after we calculated the updated curr.
 '''
 class Solution:
     def numDecodings(self, s):
 
         # O(N) time and O(1) space
-        if s[0] == "0":
+        if not s or s[0] == '0':
             return 0
-    
+        
+        oneBack = 1 if int(s[-1]) != 0 else 0
         twoBack = 1
-        oneBack = 1
 
-        for i in range(1, len(s)):
-            current = 0
-            if s[i] != '0':
-                current = oneBack
-            doubleDigits = int(s[i-1:i+1])
-            if doubleDigits >= 10 and doubleDigits <= 26:
-                current += twoBack
+        for i in reversed(range(len(s)-1)):
+            curr = 0
+            if s[i] == '0':
+                twoBack = oneBack
+                oneBack = curr
+                continue
+            curr = oneBack
+
+            doubleDig = int(s[i:i+2])
+            if 10 <= doubleDig <= 26:
+                curr += twoBack
             twoBack = oneBack
-            oneBack = current
+            oneBack = curr
         return oneBack
-print("hiiii")
