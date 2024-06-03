@@ -60,5 +60,5 @@ class Solution:
         # Lets say the array is [3,1,5,8] and we want to start our dfs for index 3 and 8 
         # index one is because we added [1] + nums + [1] so we are starting at 1 and len(nums)-> (4)
         # Which makes the index 1, 4 -> maxCoins(1, 4)
-        maxCoins(1, len(nums))
+        return dfs(1, len(nums))
         
