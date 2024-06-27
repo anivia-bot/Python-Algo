@@ -1,5 +1,5 @@
 class Solution:
-    def removeDuplicates(self, nums: List[int]) -> int:
+    def removeDuplicates(self, nums):
         # The time complexity would be O(N) and the space complexity would be O(1)
         count = 0
         firstNum = None

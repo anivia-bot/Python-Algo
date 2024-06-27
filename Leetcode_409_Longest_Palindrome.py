@@ -1,5 +1,5 @@
 class Solution:
-    def longestPalindrome(self, s: str) -> int:
+    def longestPalindrome(self, s):
 
         # This algorithem runs in O(N) time as we iterate through the entire string
         # O(1) space as the alphabet is fixed. 26 letters, 52 if you count cap case.

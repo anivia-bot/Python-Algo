@@ -1,5 +1,6 @@
+import itertools
 class Solution:
-    def largestVariance(self, s: str) -> int:
+    def largestVariance(self, s):
 		# Create a dictionary with the count of all chars of s
         chars = {}
         for c in s:

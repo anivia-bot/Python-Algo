@@ -1,5 +1,5 @@
 class Solution:
-    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+    def floodFill(self, image, sr, sc, color):
         
         # The time complexity would be O(N*M) or O(N) as in every elements in the matrix
         # Space complexity would be O(h) as we are performing a DFS recursively. h means the height of memories 

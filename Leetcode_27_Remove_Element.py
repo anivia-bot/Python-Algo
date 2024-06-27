@@ -1,5 +1,5 @@
 class Solution:
-    def removeElement(self, nums: List[int], val: int) -> int:
+    def removeElement(self, nums, val):
         # O(N) run time and O(1) space
         l = 0
         r = len(nums) - 1

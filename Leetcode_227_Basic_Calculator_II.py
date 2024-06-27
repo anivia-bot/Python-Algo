@@ -1,5 +1,5 @@
 class Solution:
-    def calculate(self, s: str) -> int:
+    def calculate(self, s):
 
         # The time complexity for this algorithm would be O(N)
         # The space complexity for this algo would be O(N) as well

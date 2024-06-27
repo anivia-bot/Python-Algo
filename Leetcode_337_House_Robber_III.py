@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def rob(self, root: Optional[TreeNode]) -> int:
+    def rob(self, root):
         # O(N) time and O(N) space on the call stack.
         def dfs(node):
             if not node:

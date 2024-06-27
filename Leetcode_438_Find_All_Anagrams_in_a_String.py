@@ -1,5 +1,5 @@
 class Solution:
-    def findAnagrams(self, s: str, p: str) -> List[int]:
+    def findAnagrams(self, s, p):
         
         # This run in O(N) time since we only iterate through the s string once
         # The space complexity would be O(1) as the sHash and pHash will only hold up to 26 alphabets

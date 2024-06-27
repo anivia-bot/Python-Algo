@@ -1,5 +1,5 @@
 class Solution:
-    def findPoisonedDuration(self, timeSeries: List[int], duration: int) -> int:
+    def findPoisonedDuration(self, timeSeries, duration):
         
         # Time complexity would be O(N)
         # Space complexity would be O(1)

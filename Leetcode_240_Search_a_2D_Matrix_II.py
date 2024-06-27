@@ -1,5 +1,5 @@
 class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+    def searchMatrix(self, matrix, target):
         
         # Time complexity would be O(m+n) since it will try to iterate over the rows the columns
         row = len(matrix)
