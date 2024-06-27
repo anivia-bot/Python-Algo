@@ -1,5 +1,5 @@
 class Solution:
-    def calculate(self, s: str) -> int:
+    def calculate(self, s):
         # Time complexity would be O(N)
         # Speace complexity would be O(N) as well
         cur = 0 

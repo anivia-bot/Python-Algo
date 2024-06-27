@@ -1,5 +1,5 @@
 class Solution:
-    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+    def canConstruct(self, ransomNote, magazine):
 
         # Since we are iterating through the entire input. We are expecting a O(N) solution
         # We have an extra dictionary however this dictionary will not grow as our input 

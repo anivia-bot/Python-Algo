@@ -1,5 +1,5 @@
 class Solution:
-    def isAlienSorted(self, words: List[str], order: str) -> bool:
+    def isAlienSorted(self, words, order):
         # Time would be O(N) and space would be O(1) since there are only lowercase alpha 26 letters
         orderDict = {}
         for idx, val in enumerate(order):

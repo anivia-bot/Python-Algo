@@ -1,6 +1,9 @@
 class Solution:
-    def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
+    def jobScheduling(self, startTime, endTime, profit):
         
+        # pass the decorator it is pre defined
+        def lru_cache():
+            pass
         # This algo runs in O(N^2) time and O(N^2) space
         n = len(startTime)
         jobs = list(zip(startTime, endTime, profit))

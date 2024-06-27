@@ -1,5 +1,5 @@
 class Solution:
-    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+    def permuteUnique(self, nums):
         # Time complexity would be O(N!)
         # Space complexity would be O(N)
         res = []

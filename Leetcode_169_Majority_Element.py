@@ -1,5 +1,5 @@
 class Solution:
-    def majorityElement(self, nums: List[int]) -> int:
+    def majorityElement(self, nums):
         
         # Boyer-Moore Voting Algorithm with O(N) run time and O(1) space
         
@@ -21,7 +21,7 @@ class Solution:
         
         
         # This is the hashmap solution with O(N) time and space complexity
-    def majorityElement(self, nums: List[int]) -> int:
+    def majorityElement(self, nums):
         if len(nums) == 1:
             return nums[0]
         count = {}

@@ -1,12 +1,15 @@
-# The isBadVersion API is already defined for you.
 # def isBadVersion(version: int) -> bool:
 
 class Solution:
-    def firstBadVersion(self, n: int) -> int:
+    def firstBadVersion(self, n):
 
         # The time complexity for this case would be O(log(N)) as we are using a binary search approach
         # The space complexity would be O(1) as we only use two poiinters in this solutions
-        
+
+        # The isBadVersion API is already defined for you.
+
+        def isBadVersion(version):
+            pass
         l = 0 
         r = n
         

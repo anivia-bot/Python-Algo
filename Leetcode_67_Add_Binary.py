@@ -1,5 +1,5 @@
 class Solution:
-    def addBinary(self, a: str, b: str) -> str:
+    def addBinary(self, a, b):
         
         # Time complexity would be O(N) as we iterate through the input size
         # Space complexity would be O(N) since we reversed the strings into an array

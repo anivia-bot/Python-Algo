@@ -1,5 +1,5 @@
 class Solution:
-    def sortSentence(self, s: str) -> str:
+    def sortSentence(self, s):
         wordDict = {}
         cnt = 0
         tmpS = ''

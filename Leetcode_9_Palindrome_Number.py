@@ -1,5 +1,5 @@
 class Solution:
-    def isPalindrome(self, x: int) -> bool:
+    def isPalindrome(self, x):
 
         # This algo takes O(N) time and O(N) space
         if x < 0:

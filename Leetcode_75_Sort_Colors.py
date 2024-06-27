@@ -1,5 +1,5 @@
 class Solution:
-    def sortColors(self, nums: List[int]) -> None:
+    def sortColors(self, nums):
         """
         Perform a bucket sort with one-pass solution that runs in O(N) solution and O(1) time
         Look out for edge case when swaping 0 with the right ptr

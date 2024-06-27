@@ -1,5 +1,5 @@
 class Solution:
-    def calPoints(self, operations: List[str]) -> int:
+    def calPoints(self, operations):
         
         # O(N) operations and O(N) time complexity
         if not operations:

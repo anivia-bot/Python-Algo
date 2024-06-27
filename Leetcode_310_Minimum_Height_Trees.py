@@ -1,5 +1,5 @@
 class Solution:
-    def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
+    def findMinHeightTrees(self, n, edges):
         # This algo runs in O(N) time and O(N) space
         graph = [set() for x in range(n)]
         for edge in edges:
