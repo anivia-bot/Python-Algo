@@ -39,13 +39,24 @@ The next thing we need to take care about is the repeated val when iterating thr
 We have a nested loop so we need to make sure that both loops will not produce duplicate nums
 The first edge cases would be 
 
+The logic goes as if the starting number you picked has already been used then it might generate
+a repeating arrays for example: [-4, -1, -1, 0, 1, 3] -> if we reuse the first number twice then we
+will have repeated values
 if i > 0 and nums[i] == nums[i-1]:
     continue
                 
 and the second edge cases would be
+if we have a repeated second number then we might also create duplicates with the same reason.
 
 while r > l and nums[l] == nums[l-1]:
     l += 1
+
+
+In sum, cases like this 3sum, we need to sort the array then we check for repeated first num and 
+repeated second num when we found a match.
+
+The first num (i) ensure the starting num wont be repeated and the second num(j) ensure no middle num
+will be repeated.
 '''
 
 
@@ -59,22 +70,20 @@ class Solution:
 
         nums.sort()
         res = []
-        
         for i in range(len(nums)):
             if i > 0 and nums[i] == nums[i-1]:
                 continue
-            l = i + 1
-            r = len(nums)-1
-            while r > l:
-                total = nums[l]+nums[r]+nums[i]
-                if total > 0:
-                    r -= 1
+            j = i + 1
+            k = len(nums) - 1
+            while j < k:
+                total = nums[i] + nums[j] + nums[k]
+                if total == 0:
+                    res.append([nums[i], nums[j], nums[k]])
+                    j += 1
+                    while j < k and nums[j] == nums[j-1]:
+                        j += 1
                 elif total < 0:
-                    l += 1
+                    j += 1
                 else:
-                    res.append([nums[i], nums[l], nums[r]])
-                    l += 1
-                    while r > l and nums[l] == nums[l-1]:
-                        l += 1
-        return res
-                    
+                    k -= 1
+        return res 
