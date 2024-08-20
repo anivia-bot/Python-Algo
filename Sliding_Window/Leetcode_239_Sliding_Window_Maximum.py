@@ -41,6 +41,26 @@ the left most value will not be included in the bracket. Thus we pop it off from
 When we reach to the point where the string is the size of k. Left and right ptr will both + 1
 otherwise we will just be expending the right ptr untill the condition is satisfied.
 
+
+In sum, this algo runs by keeping a deque and track the largest num in k so far. the logic goes as this
+
+q = [3,2,1,0] -> if we add a 4 into it we simply don't need all the previous num and just pop everything off
+and replaced it with 4 
+
+ l
+[3, 2, 1 ,0, 4], 3, 2, 1 
+->
+    l
+3, [2, 1 ,0, 4, 3], 2, 1 
+-> 
+       l
+3, 2, [1 ,0, 4, 3, 2], 
+
+-> the window will shift all the way till l ptr reaches the orignal 4 and new value will be replacing 4 as
+the q will store up any value that is less than 4
+dq -> [4, 3, 2] -> monotonically decreasing q -> left value should always be bigger than the right or else it 
+gets popped.
+
 '''
 
 import collections
@@ -49,6 +69,8 @@ class Solution:
 
         # O(N) time and space
 
+        # if len(nums) < k which means we just find the greatest value and replaced every 
+        # possible num to the largest num in the array
         if len(nums) < k:
             maxNum = float('-inf')
             for i in range(nums):
@@ -60,12 +82,17 @@ class Solution:
         l, r = 0, 0
 
         while r < len(nums):
+            # Popping off all the unnecessary num that are not the largest num so far
             while q and q[-1] < nums[r]:
                 q.pop()
             q.append(nums[r])
 
-            if (r - l + 1) >= k:
+            # if the window equals the k then we can finally add the largest val in the window
+            # as the q will keep track on what the largest value is.
+            if (r - l + 1) == k:
                 output.append(q[0])
+                # if we finally get to the orignal position where the largest number used to be
+                # pop it off since we are moving to the next 'window'
                 if nums[l] == q[0]:
                     q.popleft()
                 l += 1
