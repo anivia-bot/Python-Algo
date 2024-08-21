@@ -37,6 +37,11 @@ iterate the list backwards and calculate the time it takes to reach the target l
 append the time into the carfleet stack
 if the stack has at least 2 cars, pop the car that will merge into one carfleet
 since the slower car will be representing 
+
+In sum, think of it in terms of time. How much time does it need to get to the target destination.
+iterate in reverse (start from the final car and traverse all the way to the first car). If the time
+is less than the previous car in the stack, it means that cars will collide. if the time is much greater
+than the previous car in the stack, it means that it might form a new car fleet.
 '''
 
 class Solution:
@@ -45,22 +50,19 @@ class Solution:
         # Time complexity would be O(NlogN) due to sorting
         # Space complexity would be O(N)
 
-        carFleetStack = []
-        psCombine = []
-
+        pair = []
         for i in range(len(position)):
-            tmp = []
-            tmp.append(position[i])
-            tmp.append(speed[i])
-            psCombine.append(tmp)
+            pair.append([position[i], speed[i]])
+        pair.sort()
+        stack = []
 
-        psCombine.sort()
-        for j in reversed(range(len(psCombine))):
-            speed = psCombine[j][1]
-            position = psCombine[j][0]
-            time = (target - position) / speed
-            carFleetStack.append(time)
-
-            if len(carFleetStack) >= 2 and carFleetStack[-1] <= carFleetStack[-2]:
-                carFleetStack.pop()
-        return len(carFleetStack) 
+        for pos, speed in reversed(pair):
+            dis = target - pos
+            time = dis / speed
+            if not stack:
+                stack.append(time)
+                continue
+            if stack and stack[-1] < time:
+                stack.append(time)
+                
+        return len(stack)
