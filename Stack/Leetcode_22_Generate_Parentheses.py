@@ -28,7 +28,16 @@ set basecases for both backtracking path.
 pop the result since we are doing backtracking and we cant reuse the
 result so we will need tp pop the value
 
-'''
+In sum, when dealing with backtracking problem, make sure to keep track on what logics need to be repeated and what
+could be the base case. In this case, the base case will be when we finally reached the end when both l and r are equals
+to n, which means we burned all exisiting parenthesis. Once we figured out the base case, we need to implement the logic.
+Think of it as a DFS, we first keep adding open bracket till we used them all (left < n) since when left is less than n
+we haven't used all the bracket yet. Once we used all the bracket, we start adding the right bracket. the logic goes as
+right has to be less than left (or else it would be an invalid Parenthesis)
+
+remeber to pop the item since it is a backtracking problem.
+
+''' 
 
 
 
@@ -58,6 +67,5 @@ class Solution:
                 tmp.pop()
 
         backtracking(0,0)
-        print(len(res))
 
         return res
