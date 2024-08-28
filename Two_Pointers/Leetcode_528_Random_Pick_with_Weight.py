@@ -21,14 +21,28 @@ Solution:
 
 The trick is to realize this is a two pointer problem. you first have to create a probability list
 -> [1, 3, 6] will be come [1, 4, 10] as you add up all the weight progressively. The range will be 
-the probabilty for example: For target = 5 and cumulative_weights = [1, 4, 10]:
+the probabilty for example: 
+
+For target = 5 and cumulative_weights = [1, 4, 10]:
 Start by comparing 5 with the middle value (4 at index 1).
 Since 5 is greater than 4, move to the right half.
 Compare 5 with the next value (10 at index 2).
-Since 5 is less than 10, bisect_left determines that 5 should be inserted before 10.
-Therefore, bisect_left returns 2, meaning that index 2 is the correct index for the random number 5.
 
+Apply binary search on this problem, if the value match, return the index.
+If the mid value is smaller than the target value (randomInt) more the ptr to m + 1
+else r = m. 
 
+        l = 0
+        r = len(self.prob) - 1
+        
+        while l < r:
+            m = (l + r) // 2
+            if randomInt > self.prob[m]:
+                l = m + 1
+            else:
+                r = m
+        return l
+        
 '''
 
 import random
