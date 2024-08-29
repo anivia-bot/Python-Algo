@@ -36,18 +36,19 @@ condition no longer satisfied
 find the shortest string and store the l and r position in a list (res)
 return res 
 
+need should be the len(tDict) since if in the case of 'aa' we wouldnt be able to make the correct have == need
+as if rightChar in tDict and sDict[rightChar] == tDict[rightChar] only make have +=1 once even when we have two matching
+strings
+
+
+In sum, when dealing with this problem, just make sure you understand it is a sliding window problem and utlize the
+need and have variable to cut down time complexity. You could compare two dictionaries but it runs very slow.
 '''
 class Solution:
     def minWindow(self, s, t):
         
         # time complexity would be O(N)
         # space complexity would be O(1) since there are at most 26 chars in the alphabets
-        
-        if len(t) > len(s):
-            return ''
-        
-        if s == t:
-            return t
 
         sDict = {}
         tDict = {}

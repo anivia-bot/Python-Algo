@@ -30,32 +30,43 @@ lMax get updated
 
 repeat the same thing with rMax and r-1 ptr
 
+In sum, we have 4 ptrs, lMax, l, rMax, r. We first figure out if lMax greater or rMax greater.
+if lMax is greater we can safely calculate every grid by using this 
+water = max(lMax, height[l]) - height[l]
+
+If height[l] >= lMax then we get no water as the result will always be 0
+We update the index l += 1 and update lMax 
+
+Same logic goes to r ptr.
+
 '''
 
 class Solution:
     def trap(self, height):
         # The time complexity would be O(N) and the space complexity would be O(1)
+        if not height:
+            return 0
     
-        l, r = 0, len(height) - 1
-        lMax, rMax = height[l], height[r]
-        total = 0
-        
+        res = 0
+        l = 0
+        lMax = height[l]
+        r = len(height) - 1
+        rMax = height[r]
+
         while l < r:  
+            # We know that right side will be greater so we can simply calculate every grids
             if lMax < rMax:
-                water = max(height[l], lMax) - height[l]
+                # Calculate every grid by subtracting every height[l] it traverse till lMax is no longer < than rMax
+                # Let say the grid goes as [3,4,5,6] height[l] is always increasing which means max(height[l], lMax)
+                # will always be height[l] and water will be 0
+                water = max(lMax, height[l]) - height[l]
                 l += 1
-                lMax = max(height[l], lMax)
-                if water == 0:
-                    continue
-                else:
-                    total += water
+                # update lMax to check if lMax will still be greater than rMax on the next iteration
+                lMax = max(lMax, height[l])
+                res += water
             else:
-                water = max(height[r], rMax) - height[r]
+                water = max(rMax, height[r]) - height[r]
                 r -= 1
-                rMax = max(height[r], rMax)
-                if water == 0:
-                    continue
-                else:
-                    total += water
-        return total
-                
+                rMax = max(rMax, height[r])
+                res += water
+        return res
