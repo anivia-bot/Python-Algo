@@ -41,18 +41,24 @@ class Solution:
     def findMin(self, nums):
 
         # Time complexity runs in O(logN) and O(1) space
-        
-        minNum = nums[0]
-        l, r = 0, len(nums) - 1
+        minVal = float('inf')
+        l = 0
+        r = len(nums) - 1
 
-        while r >= l:
-            if nums[r] >= nums[l]:
-                minNum = min(nums[l], minNum)
-            
+        while l <= r:
+            # we are at the left portion of the array
+            if nums[r] > nums[l]:
+                minVal = min(minVal, nums[l])
+                break 
+            # if we are covering all arrays, [3,4,5,1,2] nums[m] >= nums[l] means we need to move the
+            # left ptr to the right.
             m = (l + r) // 2
-            minNum = min(nums[m], minNum)
+            # check minVal with nums[m] before we move our index
+            minVal = min(minVal, nums[m])
+            # nums[m] >= (its greater or equal because of the edge case when we have [2,1])
             if nums[m] >= nums[l]:
                 l = m + 1
+            # if we are at the right side of the array we will need to shrink from the right
             else:
                 r = m - 1
-        return minNum
+        return minVal

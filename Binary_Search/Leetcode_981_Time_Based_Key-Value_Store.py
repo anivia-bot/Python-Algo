@@ -38,6 +38,12 @@ Use l and r ptr (right ptr will be the len of the list inside the dict)
 if timestamp has greater val then we store it in res temp until we reach
 to the closest timestamp with the while loop.
 
+
+When dealing with binary search that have value that are not even distributed ex: 1, 3, 7, 14, 129
+It is best to have a tmp/res variable to keep track on what is the bottom line that satisfied the needs
+of the problem. Since we are having a stack and the problem ask for the nearest result that is smaller or 
+equal to the given timestamp, when updating the left ptr, it is guarentee that the middle ptr could be on of
+the result so we should saved it in tmp.
 '''
     
     # init and set will have O(1) time complexity and get will have O(log(N)) time.
@@ -46,33 +52,35 @@ to the closest timestamp with the while loop.
 class TimeMap:
 
     def __init__(self):
-        self.timeMap = {}
+        self.keyStack = {}
 
-    def set(self, key: str, value: str, timestamp: int) -> None:
-        if key not in self.timeMap:
-            self.timeMap[key] = [(value, timestamp)]
-        else:
-            self.timeMap[key].append((value, timestamp))
+    def set(self, key, value, timestamp):
+        if key not in self.keyStack:
+            self.keyStack[key] = [(value, timestamp)]
+            return
+        self.keyStack[key].append((value, timestamp))
+
+    def get(self, key, timestamp):
         
-    def get(self, key: str, timestamp: int) -> str:
-        res = ''
-        if key not in self.timeMap:
-            return res
+        if key not in self.keyStack:
+            return ""
         
+        currentStack = self.keyStack[key] # [(v,t), (v,t)] in sorted order.
         l = 0
-        r = len(self.timeMap[key]) - 1
+        r = len(currentStack) - 1
+        res = 0
         while r >= l:
-            mid = (l + r) // 2
-            if self.timeMap[key][mid][1] == timestamp:
-                return self.timeMap[key][mid][0]
-            
-            if self.timeMap[key][mid][1] <= timestamp:
-                res = self.timeMap[key][mid][0]
-                l = mid + 1
+            m = (l + r) // 2
+            currentTime = currentStack[m][-1]
+            currentValue = currentStack[m][0]
+            if currentTime == timestamp:
+                return currentValue
+            elif currentTime < timestamp:
+                res = m
+                l = m + 1
             else:
-                r = mid - 1
-
-        return res
+                r = m - 1
+        return "" if currentStack[res][-1] > timestamp else currentStack[res][0]
 
 
 # Your TimeMap object will be instantiated and called as such:
