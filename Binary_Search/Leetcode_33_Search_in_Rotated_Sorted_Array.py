@@ -31,6 +31,11 @@ right side mean that the mid val is the smallest on the right side
 after identifying the ptr position. write if statement to decide if 
 the ptr are in the rage of left or ride side. move the ptr accordingly
 
+Dont worry too much about have the value of left ptr > right ptr
+Just focus on spliting the array into either left portion or right portion (since one of them will definately matches)
+Once you split them into left portion of the array and right portion of the array check if target is in the range of
+l -> m  or r -> m  
+
 '''
 
 class Solution:
