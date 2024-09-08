@@ -11,6 +11,11 @@ Output: [1,2,3,5]
 Solution:
 There are two ways to solve this problem.
 
+Be creative and think of it as a fixed sliding window problem. l and r ptr will be the same distance n.
+when r ptr goes out of bounce then we know the l.next ptr will be the node we want to remove.
+The reason l won't be at the nth node is because it will be much easier to do left.next = left.next.next
+
+
 Fast:
 First set a left node (none) and a right node (head)
 write a while loop to seperate the two node by n
