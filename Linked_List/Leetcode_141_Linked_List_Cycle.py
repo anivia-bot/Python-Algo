@@ -12,6 +12,9 @@ Explanation: There is a cycle in the linked list, where the tail connects to the
 
 '''
 Solution:
+
+Watch out when head or head.next does not exist ex: [] or [1]
+Write condition before we start fast = head.next or else we will be none has not method .next
 The trick is the have a fast ptr and a slow ptr
 
 the fast ptr will be head.next and the slow ptr will be head
