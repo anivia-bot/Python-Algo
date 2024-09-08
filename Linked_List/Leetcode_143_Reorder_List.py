@@ -35,25 +35,41 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        slow, fast = head, head.next
+        slow = head
+        fast = head.next
+
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
         
-        second = slow.next
+        # slow.next is to seperate the left part of the linkedlist
+        secondHead = slow.next
         slow.next = None
         prev = None
 
-        while second:
-            tmp = second.next
-            second.next = prev
-            prev = second
-            second = tmp
+        # reverse the linkedlist
+        while secondHead:
+            secondHeadNext = secondHead.next
+            secondHead.next= prev
+            prev = secondHead
+            secondHead =secondHeadNext
+        
+        # Merging two linkedlist together
+        tmp = ListNode()
+        h = tmp
+        l1 = head
+        l2 = prev
 
-        first, second = head, prev
-        while second:
-            tmp1, tmp2 = first.next, second.next
-            first.next = second
-            second.next = tmp1
-            first = tmp1
-            second = tmp2        
+        while l2:
+            tmp.next = l1
+            tmp = tmp.next
+            l1 = l1.next
+            tmp.next = l2
+            tmp = tmp.next
+            l2 = l2.next
+        
+        while l1:
+            tmp.next = l1
+            l1 = l1.next
+        
+        return h.next
