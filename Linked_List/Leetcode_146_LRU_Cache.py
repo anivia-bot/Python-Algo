@@ -37,63 +37,72 @@ make them be connect to the right ptr (most recent used)
 
 if the cache exceed capacity then just remove the lru (self.left.next)
 and remove it from the cache dict as well 
+
+In sum, initialize left and right to trakc least lru and most recent lru
+Use a dict to save all cache
+create an extra node to be able to connect on the linked list
+implement insert and delete seperately check lru capacity lastly and delete from linked list and dict
 '''
 
 
-class Node: 
-    # This algo runs in O(1) time and take up O(N) space
-    def __init__(self, key, val):
+class Node:
+    def __init__(self, key=0, val=0, prev=None, nxt=None):
         self.key = key
         self.val = val
-        self.prev = None
-        self.next = None
+        self.prev = prev
+        self.nxt = nxt
 
 class LRUCache:
-    def __init__(self, capacity: int):
-        self.cap = capacity
+
+    def __init__(self, capacity):
+        # Store all data
         self.cache = {}
-
-        self.left = Node(0,0)
-        self.right = Node(0,0)
-        self.left.next = self.right
+        self.capacity = capacity
+        # Track LSU, right for most recent used and left for least recent used
+        self.left = Node()
+        self.right = Node()
+        self.left.nxt = self.right
         self.right.prev = self.left
-
-    def remove(self, node):
-        prev = node.prev
-        nxt = node.next
-        prev.next = nxt
-        nxt.prev = prev
     
-    def insert(self, node):
+    def insert(self,node):
         prev = self.right.prev
         nxt = self.right
         node.prev = prev
-        node.next = nxt
-        prev.next = node
+        node.nxt = nxt
+        prev.nxt = node
         nxt.prev = node
+
+    def delete(self,node):
+        prev = node.prev
+        nxt = node.nxt
+        prev.nxt = nxt
+        nxt.prev = prev
 
     def get(self, key: int) -> int:
         if key not in self.cache:
             return -1
-        else:
-            self.remove(self.cache[key])
-            self.insert(self.cache[key])
-            return self.cache[key].val
+        
+        self.delete(self.cache[key])
+        self.insert(self.cache[key])
+        return self.cache[key].val
         
 
     def put(self, key: int, value: int) -> None:
-        if key not in self.cache:
-            self.cache[key] = Node(key, value)
-            self.insert(self.cache[key])
-        else:
-            self.remove(self.cache[key])
-            self.cache[key] = Node(key, value)
-            self.insert(self.cache[key])
         
-        if len(self.cache) > self.cap:
-            lru = self.left.next
-            self.remove(lru)
-            del self.cache[lru.key]
+        if key not in self.cache:
+            newNode = Node(key,value)
+            self.cache[key] = newNode
+            self.insert(newNode)
+        else:
+            newNode = Node(key,value)
+            self.delete(self.cache[key])
+            self.cache[key] = newNode
+            self.insert(self.cache[key])
+
+        if len(self.cache) > self.capacity:
+            key = self.left.nxt.key
+            self.delete(self.left.nxt)
+            del self.cache[key]
 
 
 # Your LRUCache object will be instantiated and called as such:
