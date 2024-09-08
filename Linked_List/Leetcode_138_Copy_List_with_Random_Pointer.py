@@ -25,6 +25,16 @@ Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
 
 '''
 Solution:
+
+Create a dict that store all the newly created node mapping to the old node.
+{
+    oldNode : newNode
+}
+
+This newNode does not contain next nor random.  That's why we need another while loop
+to map the random and next for all the new Node.
+
+
 The trick is to run a while loop twice
 the first loop creates a copy of all nodes and save it into a dict
 create a copy node then run the next while loop
@@ -48,7 +58,7 @@ class Solution:
         while curr:
             copy = Node(curr.val)
             oldToNew[curr] = copy
-            curr =  curr.next
+            curr =  curr.next   
         
         copyCurr = oldToNew[head]
         dummy = copyCurr
