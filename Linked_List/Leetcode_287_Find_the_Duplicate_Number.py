@@ -29,20 +29,27 @@ x => slow and fast ptr intersect pt to cycle starting pt
 class Solution:
     def findDuplicate(self, nums):       
         # O(N) time and O(1) space 
-        tortoise, hare = 0, 0
-        # The first while loop will find where fast and slow first meet 
+        
+        slow = 0
+        fast = 0
+        # Use the Floyd's Tortoise and Hare algorithm to detect a cycle.
         while True:
-            tortoise = nums[tortoise]
-            hare = nums[nums[hare]]
-            if tortoise == hare:
+            # Move the slow pointer one step.
+            slow = nums[slow]
+            # Move the fast pointer two steps.
+            fast = nums[nums[fast]]
+            
+            # If the slow and fast pointers meet, a cycle exists.
+            if slow == fast:
                 break
         
-        # Find the "entrance" to the cycle.
-        # start a new ptr that moves from the begining of the linked list
-        # move hare (where fast and slow first meet) and new ptr tgt untill they 
-        # meet one another.
-        tortoise = 0
-        while tortoise != hare:
-            tortoise = nums[tortoise]
-            hare = nums[hare]
-        return hare
+        # To find the duplicate number, reset one pointer to the start.
+        slow2 = 0
+        while True:
+            # Move both pointers at the same speed.
+            slow = nums[slow]
+            slow2 = nums[slow2]
+            
+            # When they meet again, the meeting point is the duplicate number.
+            if slow == slow2:
+                return slow
