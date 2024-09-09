@@ -54,20 +54,28 @@ class Solution:
             # the first element from the next group
             groupNext = kthNode.next
             # This needs to be point to the next group as we know 
-            # (1 -> 2 -> 3) -> 4 we need to let 1 be point at 4 
-            # 4 <- (1 <- 2 <- 3)  => (3 -> 2 -> 1) -> 4 
+            # (1 -> 2) -> 3 we need to let 1 be point at 4 when we reverse the node
+            # (2 -> 1) -> 3 
+            # Since we are reversing a linked list we want 1 to be pointing at 3 so if we set
+            # 3 (kthNode.next) as prev then when we reverse the linkedlist, curr will be naturally pointing at prev
             prev = kthNode.next
             # Just the first element in the linked list
             curr = prevGroup.next
 
             # reverse the linked list
             while curr != groupNext:
-                tmp = curr.next
+                currNext = curr.next
                 curr.next = prev
                 prev = curr
-                curr = tmp
+                curr = currNext
             
             # tmp holds the first element but now is the last element from the kth group
+            # Think of the following part as a persective from the dummy node, the dummy node
+            # wants to point at the kth node since the kth node will now be the new head
+            # and the original head (1) will now the end of the segment which is prevGroup
+            # in short in the scope of dummy -> (1 -> 2) -> (3 -> 4) -> (5)
+            # dummy now needs to point at 2 (kth node) and prevGroup now needs to be 1
+            # dummy -> (2 -> 1) -> (3 -> 4) -> (5)
             tmp = prevGroup.next
             # the last element (1) will now be point at the first element (6)
             prevGroup.next = kthNode
