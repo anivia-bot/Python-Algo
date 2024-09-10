@@ -41,6 +41,10 @@ class Solution:
             left = dfs(node.left)
             right = dfs(node.right)
             balanced = (left[0] and right[0]) and (abs(left[1] - right[1]) <= 1)
+            # The reason we have 1 + max(left[1], right[1]) is because we are tring to find 
+            # the height at each node from bottom to top. Think of it as trying to find out
+            # the height of every node and when you return these value it will refeclt on the left or right
+            # and if at a certain level the left and right isn't balanced we can simply make balanced false
             return [balanced, 1 + max(left[1], right[1])]
         
         return dfs(root)[0]
