@@ -11,7 +11,9 @@ Explanation: The LCA of nodes 2 and 8 is 6.
 '''
 '''
 Solution:
-The trick to understand lowest common ancentor is the understand
+
+Split occur is where the lowest common ancestor is.
+The trick to understand lowest common ancestor is the understand
 that when a split occur, that is where the LCA is.
 for example. p < LCA and q > LCA. we know that p is smaller than the current node 
 and q is greater than the current node. That must mean that the current node
