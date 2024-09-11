@@ -14,6 +14,8 @@ Node 3 -> (3,1,3) is the maximum value in the path.
 '''
 '''
 Solution:
+
+Pass the currMax into the dfs and return the added value so far.
 The trick is the perform a DFS and pass 
 the currMax value into the dfs function.
 create a global variable to track if the counts
