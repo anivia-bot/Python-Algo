@@ -38,17 +38,15 @@ class KthLargest:
     # Space O(N)
 
     def __init__(self, k, nums):
-        self.minHeap = nums
+        self.nums = nums
         self.k = k
-        heapq.heapify(self.minHeap)
-        while len(self.minHeap) > self.k:
-            heapq.heappop(self.minHeap)
-
-    def add(self, val: int) -> int:
-        heapq.heappush(self.minHeap, val)
-        if len(self.minHeap) > self.k:
-            heapq.heappop(self.minHeap)
-        return self.minHeap[0]
+        heapq.heapify(self.nums)
+    
+    def add(self, val):
+        heapq.heappush(self.nums, val)
+        while len(self.nums) > self.k:
+            heapq.heappop(self.nums)
+        return self.nums[0]
 
 
 # Your KthLargest object will be instantiated and called as such:
