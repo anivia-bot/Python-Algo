@@ -41,22 +41,28 @@ class Solution:
     def permute(self, nums):
         # Time complexity would be O(N!) N factorial
         # Space complexity would be O(N)
-        res = []
-        seen = set()
-        
-        def backtrack(nums, curr):
-            if len(nums) == len(curr):
-                res.append(curr.copy())
-                
-            for num in nums:
-                if num not in seen:
-                    curr.append(num)
-                    seen.add(num)
-                    backtrack(nums,curr)
-                    curr.pop()
-                    seen.remove(num)
-        backtrack(nums, [])
-        return res
+        if len(nums) == 0:
+            return [[]]
+
+        def backtrack(splitNums):
+            # Skipping the first element and create the sub problem
+            # [1,2,3] -> [2,3] -> [3] -> []
+            if len(splitNums) == 0:
+                return [[]]
+            permu = backtrack(splitNums[1:])
+            res = []
+
+            #iterate over and insert the first element that you skipped
+            for perm in permu:
+                # +1 because we are now including the first element and we could be
+                # inserted into the last position
+                for i in range(len(perm) + 1):
+                    tmpPerm = perm.copy()
+                    tmpPerm.insert(i, splitNums[0])
+                    res.append(tmpPerm)
+            return res
+        return backtrack(nums)
+
     
 
 class Solution:
