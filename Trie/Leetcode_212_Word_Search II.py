@@ -61,7 +61,7 @@ class Solution:
 
         rLen = len(board)
         cLen = len(board[0])
-        # The reason we use set for res is beacuse set is immutable
+        # The reason we use set for res is beacuse of duplicate
         visited = set()
         res = set()
 
