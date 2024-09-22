@@ -33,17 +33,25 @@ class Solution:
     def findItinerary(self, tickets):
         # Time complexity would be O(V+E)^2
         # Space complexity would be O(v + E)
+
         adj = {}
         tickets.sort()
         for src, dst in tickets:
             if src not in adj:
                 adj[src] = []
-            if dst not in adj:
-                adj[dst] = []
             adj[src].append(dst)
         res = []
 
+        # Think of it as one completed path. The problem guarentee that this will give at least one
+        # valid return. So simply let DFS traverse through the entire graphs and it will reach the
+        # end of the graph. How to guarentee we picked the right path ? Easy, if we pick the wrong path
+        # Then we will continously traverse till we find the deepest (last node) we can enter. If we find the
+        # last node first then we simply add it to the res. We only add src in our adj list so if we cant find the
+        # airport in the adj list, it must be destination.
         def dfs(airport):
+            if airport not in adj:
+                res.append(airport)
+                return 
             while adj[airport]:
                 ap = adj[airport].pop(0)
                 dfs(ap)
