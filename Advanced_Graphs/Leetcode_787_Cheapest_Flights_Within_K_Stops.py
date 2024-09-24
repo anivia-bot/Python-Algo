@@ -42,6 +42,29 @@ class Solution:
     def findCheapestPrice(self, n, flights, src, dst, k):
         # Time complexity would be O(E*K) 
         # Space would be O(E)
+
+    
+# Solution with bellman ford
+        
+        prices = [float('inf')] * n
+        prices[src] = 0
+
+        for i in range(k+1):
+            tmp = prices.copy()
+            for s, d, p in flights:
+                # If the node is inf, then it means there are no path has reached that node yet.
+                if prices[s] == float('inf'):
+                    continue
+                # If the new path smaller then that previous val, smaller than tmp[d] instead of prices[d]
+                # because during the loop, tmp[d] might be updated by other nodes which might gives different val
+                if prices[s] + p < tmp[d]:
+                    tmp[d] = prices[s] + p
+            prices = tmp
+        return prices[dst] if prices[dst] != float('inf') else -1 
+
+
+# Alt solution with BFS and inf but this will exceed in memory.
+
         adjList = {}
         for f, t, p in flights:
             if f not in adjList:
@@ -72,18 +95,3 @@ class Solution:
                     q.append([d, p+price])
             count += 1
         return -1 if res == float('inf') else res
-    
-# Solution with bellman ford
-        res = [float('inf')] * n
-        res[src] = 0
-
-        for i in range(k+1):
-            tmp = res.copy()
-            for s, d, p in flights:
-                if res[s] == float('inf'):
-                    continue
-                if res[s] + p < tmp[d]:
-                    tmp[d] = res[s] + p
-            res = tmp
-        
-        return -1 if res[dst] == float('inf') else res[dst]
