@@ -1,0 +1,13 @@
+
+Prim's Algo:
+heap + visited 
+
+
+
+Dijkstra's Algo (finding the shortest path but can't deal with negative edges):
+heap + visited
+
+
+Ballmen-Ford:
+list filled with inf + for loop on all possible neighbor node. Need tmp to ensure we don't
+modify stops that are not ready to be visited. 
