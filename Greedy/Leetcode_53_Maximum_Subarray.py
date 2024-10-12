@@ -39,33 +39,24 @@ class Solution:
 # This is the two pointer solution
 class Solution:
     def maxSubArray(self, nums):
-        l, r = 0, 0
-        maxsub = nums[0]
-        current = nums[0]
-        
-        while l < len(nums) and r < len(nums):
-            if current < 0:
+        l = 0
+        r = 0
+        res = float('-inf')
+        ptr = [0, 0]
+        curr = 0
+
+        while r < len(nums):
+            curr += nums[r]
+            if curr > res:
+                ptr = [l, r]
+                res = curr
+
+            if curr < 0:
                 r += 1
                 l = r
-                if r < len(nums):
-                    current = nums[r]
-                    maxsub = max(maxsub, current)
+                curr = 0
                 continue
-            if l == r:
-                current = nums[l]
-                maxsub = max(maxsub, current)
-                r += 1
-            else:
-                current += nums[r]
-                if current < 0:
-                    r += 1
-                    l = r
-                    if r < len(nums):
-                        current = nums[r]
-                        maxsub = max(maxsub, current)
-                    continue
-                maxsub = max(maxsub , current)
-                r += 1
-        return maxsub
+            r += 1
+        return res
                 
                 
